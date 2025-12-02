@@ -1,48 +1,109 @@
-# Drupal CMS
+<p align="center"><img src="drupal-scaffolding.png" width="200" alt="Building Drupal" /></p>
 
-Drupal CMS is a fast-moving open source product that enables site builders to easily create new Drupal sites and extend them with smart defaults, all using their browser.
+# Drupal CMS Project Demo
 
-## Getting started
+[![Build Status](https://img.shields.io/github/actions/workflow/status/jasonluttrell/drupal-demo/ci.yml?branch=main)](https://github.com/jasonluttrell/drupal-demo/actions)
+[![License](https://img.shields.io/github/license/jasonluttrell/drupal-demo)](https://opensource.org/licenses/GPL-2.0)
+[![Last Commit](https://img.shields.io/github/last-commit/jasonluttrell/drupal-demo)](https://github.com/jasonluttrell/drupal-demo/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/jasonluttrell/drupal-demo)](https://github.com/jasonluttrell/drupal-demo)
 
-If you want to use [DDEV](https://ddev.com) to run Drupal CMS locally, follow these instructions:
+This is a public-facing demo of a Drupal CMS project scaffolded using DDEV and Composer, built for showcasing modern development best practices with Git, modern DevOps workflows, configuration management, custom code, and containerized local environments. It is intended to be a full-featured demonstration of a curated baseline of Drupal 11-compatible contributed modules.
 
-1. Install DDEV following the [documentation](https://ddev.com/get-started/)
-2. Open the command line and `cd` to the root directory of this project
-3. Run the following commands:
-```shell
-ddev config --project-type=drupal11 --docroot=web
+🔗 [Preview site via DDEV](https://drupal-demo.ddev.site)
+
+---
+
+## 🚀 Getting Started
+
+> This stack uses [DDEV](https://ddev.com), PHP 8.4, Drupal 11, and Composer 2.x.
+
+1. Clone the Git repo
+2. Install DDEV ([Get Started Guide](https://ddev.com/get-started/))
+3. Open your terminal and `cd` into this project root
+4. Run the following commands:
+```bash
 ddev start
 ddev composer install
-ddev composer drupal:recipe-unpack
 ddev launch
 ```
+5. If needed, install the site:
+```bash
+ddev drush site:install standard \
+  --account-name=admin \
+  --account-pass=admin \
+  --account-mail=admin@example.com \
+  --site-name="Drupal Demo Site" \
+  --yes
+```
 
-Drupal CMS has the same system requirements as Drupal core, so you can use your preferred setup to run it locally. [See the Drupal User Guide for more information](https://www.drupal.org/docs/user_guide/en/installation-chapter.html) on how to set up Drupal.
+---
 
-### Installation options
+## 🧠 Project Features
 
-The Drupal CMS installer offers a list of features preconfigured with smart defaults. You will be able to customize whatever you choose, and add additional features, once you are logged in.
+* Drupal CMS starter kit (drupal/cms)
+* DDEV local environment
 
-After the installer is complete, you will land on the dashboard.
+---
 
-## Documentation
+## 🐘 Running Drupal with PostgreSQL (Optional)
 
-Coming soon ... [We're working on Drupal CMS specific documentation](https://www.drupal.org/project/drupal_cms/issues/3454527).
+This project uses MariaDB by default, but it also includes optional support for running Drupal on PostgreSQL 17 using DDEV.
 
-In the meantime, learn more about managing a Drupal-based application in the [Drupal User Guide](https://www.drupal.org/docs/user_guide/en/index.html).
+The PostgreSQL setup is stored in the archive branch:
+```bash
+archive/postgresql-support
+```
 
-## Contributing
+This branch contains a DDEV override file:
+```bash
+.ddev/config.postgres.yaml
+```
 
-Drupal CMS is developed in the open on [Drupal.org](https://www.drupal.org). We are grateful to the community for reporting bugs and contributing fixes and improvements.
+The goal was to confirm that Drupal installs and runs normally on PostgreSQL without changing the main development environment. The test was successful.
 
-[Report issues in the queue](https://drupal.org/node/add/project-issue/drupal_cms), providing as much detail as you can. You can also join the #drupal-cms-support channel in the [Drupal Slack community](https://www.drupal.org/slack).
+If you want to apply this to your own branch, you can cherry-pick the commit:
+```bash
+git cherry-pick <commit>
+```
 
-Drupal CMS has adopted a [code of conduct](https://www.drupal.org/dcoc) that we expect all participants to adhere to.
+After switching database engines, reinstall Drupal so it initializes with the correct driver:
+```bash
+ddev restart
+ddev drush site:install standard --yes
+```
 
-To contribute to Drupal CMS development, see the [drupal_cms project](https://www.drupal.org/project/drupal_cms).
+PostgreSQL support remains optional and is provided for teams or environments that prefer Postgres or require it for compliance.
 
-## License
+---
 
-Drupal CMS and all derivative works are licensed under the [GNU General Public License, version 2 or later](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+## 🛠 Commit Convention (50/72 Rule)
 
-Learn about the [Drupal trademark and logo policy here](https://www.drupal.com/trademark).
+This repo uses structured Git commits like:
+```bash
+📦 release: Initial snapshot for Drupal CMS demo
+
+Sets up drupal/cms with DDEV, Composer, and verified Drush install.
+Includes PHP 8.4, MariaDB 11.8, and base environment configuration.
+```
+
+🔗 See [CONTRIBUTING.md](CONTRIBUTING.md) for full list of Git tags (`feat`, `fix`, `chore`, etc.).
+
+---
+
+## 🔖 Current Version
+
+**Release Tag:** `dev02`  
+**Drupal Core:** `11.2.9`  
+**Full Version:** `25.12.10-dev02+d11.2.9`  
+This tag captures the Drupal CMS post-installation updates.
+
+---
+
+## 📝 License
+This project is open-sourced under the [GNU GPL v2 or later](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+
+---
+
+## 🤝 Contact
+
+Feel free to fork or reach out via GitHub: @jasonluttrell

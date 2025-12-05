@@ -1,33 +1,33 @@
 # -----------------------------------------------------------------------------
 # 🔐  Sensitive Configuration
 # -----------------------------------------------------------------------------
-/web/sites/*/settings.php
-/web/sites/*/settings*.php
-/web/sites/*/services.yml
+web/sites/*/settings.php
+web/sites/*/settings*.php
+web/sites/*/services*.yml
 
 # -----------------------------------------------------------------------------
 # 📦  Dependency and Build Artifacts
 # -----------------------------------------------------------------------------
-/vendor/
-/phpcs.xml
-/web/core/
-/web/modules/contrib/
-/web/themes/contrib/
-/web/profiles/
-/composer.phar
+composer.phar
+phpcs.xml
+vendor/
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+web/profiles/
 
 # -----------------------------------------------------------------------------
 # 🧪  Temporary and Uploaded Files
 # -----------------------------------------------------------------------------
-/web/sites/*/files
-/web/sites/*/private
-/private
-/tmp
+private/
+tmp
+web/sites/*/files/**
+web/sites/*/private/**
 
 # -----------------------------------------------------------------------------
 # 🔁  Backup and Export Files
 # -----------------------------------------------------------------------------
-/backup_*
+backup_*
 *.sql
 *.sqlite
 *.tar.gz
@@ -36,22 +36,22 @@
 # -----------------------------------------------------------------------------
 # 🧾  Logs
 # -----------------------------------------------------------------------------
-/logs/
+logs/
 *.log
 
 # -----------------------------------------------------------------------------
 # 🚀  Node.js / Frontend Build Artifacts
 # -----------------------------------------------------------------------------
-/node_modules/
-/npm-debug.log
+node_modules/
+npm-debug.log
 
 # -----------------------------------------------------------------------------
 # 🛠️  Drush / Drupal Console
 # -----------------------------------------------------------------------------
-/.drush/
-/.drupalconsole/
-/drush/backups/
-/drush/sites/
+.drush/
+.drupalconsole/
+drush/backups/
+drush/sites/
 
 # -----------------------------------------------------------------------------
 # 💻  Editor / IDE / OS Metadata
@@ -65,8 +65,10 @@
 # -----------------------------------------------------------------------------
 # 🐳  DDEV-Specific Files
 # -----------------------------------------------------------------------------
-/.ddev/db_snapshots/
-/.ddev/.importdb
+.ddev/.importdb
+.ddev/.tmp/
+.ddev/db_snapshots/
+.ddev/traefik/
 
 # -----------------------------------------------------------------------------
 # 🔄  Mutagen (if enabled)
